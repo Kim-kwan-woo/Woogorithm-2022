@@ -1,14 +1,14 @@
 import sys
 
 def solution():
-    length = [1]
-    for i in range(1, len(A)):
-        if A[i] > A[i-1]:
-            length.append(length[i-1]+1)
-        else:
-            length.append(length[i-1])
+    answer = [1] * N
 
-    return length[-1]
+    for i in range(N):
+        for j in range(i):
+            if A[j] < A[i]:
+                answer[i] = max(answer[i], answer[j]+1)
+
+    return max(answer)
 
         
 
