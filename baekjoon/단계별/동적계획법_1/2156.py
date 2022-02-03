@@ -1,15 +1,17 @@
 import sys
 
 def solution(N, wine):
-    answer = [[0, wine[0]], [wine[1], (wine[0]+wine[1])]]
-    for i in range(2, N):
-        print(i)
-        if answer[i-1][1] >= answer[i-2][1]:
-            answer.append([answer[i-1][1], answer[i-2][1]+wine[i]])
-        else:
-            answer.append([answer[i-1]])
+    if N == 1:
+        return wine[0]
 
-    return answer[-1]
+    answer = [[0, wine[0]], [wine[1], (wine[0]+wine[1])]]
+    maxNum = wine[0]
+    for i in range(2, N):
+        answer.append([maxNum + wine[i], answer[i-1][0] + wine[i]])
+        if max(answer[i-1]) > maxNum:
+            maxNum = max(answer[i-1])
+
+    return max(sum(answer, []))
 
 
 
