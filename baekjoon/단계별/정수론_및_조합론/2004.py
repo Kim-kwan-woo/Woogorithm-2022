@@ -2,21 +2,25 @@ import sys
 
 def solution():
     #2의 개수와 5의 개수를 세서 짝을 맞추면 그 개수만큼 뒤에서 0의 개수가 된다.
-    multi = [1]*(n+1)
+    two = twoCount(n) - twoCount(m) - twoCount(n-m)
+    five = fiveCount(n) - fiveCount(m) - fiveCount(n-m)
 
-    for i in range(1, n+1):
-        multi[i] = multi[i-1]*i
+    return min(two, five)
 
-    binomialCoefficient = str(multi[n]//(multi[m]*multi[n-m]))
+def twoCount(n):
     count = 0
-
-    for i in range(len(binomialCoefficient)-1, -1, -1):
-        if binomialCoefficient[i] == "0":
-            count += 1
-        else:
-            break
-
+    while n != 0:
+        n //= 2
+        count += n
     return count
+
+def fiveCount(n):
+    count = 0
+    while n != 0:
+        n //= 5
+        count += n
+    return count
+
 
 
 
