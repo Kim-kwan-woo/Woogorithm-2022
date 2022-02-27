@@ -1,20 +1,17 @@
 import sys
 
 def solution():
-    index = 0
     stack = []
-    while index != N:
-        for i in range(index+1, N):
-            if A[index] < A[i]:
-                stack.append(A[i])
-                break
-        
-        if len(stack) != index+1:
-            stack.append(-1)
-        
-        index += 1
+    answer = [-1] * N
 
-    return stack
+    for i in range(N):
+        while stack and A[stack[-1]] < A[i]:
+            answer[stack.pop()] = A[i]
+        stack.append(i)
+
+    return answer
+
+
     
     
 
