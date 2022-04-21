@@ -1,6 +1,6 @@
 import sys
 
-#[baekjoon 14888 연산자 끼워 넣기]
+#[baekjoon 10825 국영수]
 #---answer---#
 N = int(sys.stdin.readline().rstrip()) # 학생의 수
 student = []
